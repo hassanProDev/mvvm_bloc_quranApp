@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mvvm_islami_app/model/quran/sura_model.dart';
 import 'package:mvvm_islami_app/theming/my_theme.dart';
 import 'package:mvvm_islami_app/view%20model/quran/sura_cubit.dart';
@@ -33,7 +34,7 @@ class SuraScreen extends StatelessWidget {
               Scaffold(
                 appBar: AppBar(
                   title: Text(
-                    MyTheming.appName,
+                    AppLocalizations.of(context)!.apptitle,
                     style: Theme.of(context).textTheme.headline1,
                   ),
                 ),

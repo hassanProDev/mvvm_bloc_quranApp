@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mvvm_islami_app/model/quran/sura_model.dart';
 import 'package:mvvm_islami_app/view%20model/quran/quran_view_model.dart';
 import 'package:mvvm_islami_app/view/component/quran/sura_item.dart';
@@ -15,7 +16,7 @@ class SuraDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          MyTheming.appName,
+          AppLocalizations.of(context)!.apptitle,
           style: Theme.of(context).textTheme.headline1,
         ),
       ),
@@ -27,7 +28,6 @@ class SuraDetails extends StatelessWidget {
               Expanded(
                 child: CustomTitle(
                   title: 'الايات',
-                  right: BorderSide(width: 2, color: MyTheming.borderColor),
                   top: BorderSide(width: 2, color: MyTheming.borderColor),
                   bottom: BorderSide(width: 2, color: MyTheming.borderColor),
                 ),
@@ -35,7 +35,6 @@ class SuraDetails extends StatelessWidget {
               Expanded(
                 child: CustomTitle(
                   title: 'السورة',
-                  left: BorderSide(width: 2, color: MyTheming.borderColor),
                   top: BorderSide(width: 2, color: MyTheming.borderColor),
                   bottom: BorderSide(width: 2, color: MyTheming.borderColor),
                 ),
@@ -48,11 +47,14 @@ class SuraDetails extends StatelessWidget {
               itemBuilder: (_, index) => SuraItem(
                 suraDetailsModel: QuranViewModel.suraDetailsModel[index],
                 func: () {
-                  Navigator.pushNamed(context, SuraScreen.routeName,
-                      arguments: SuraData(
-                          suraName:
-                              QuranViewModel.suraDetailsModel[index].suraName,
-                          suraIndex: index));
+                  Navigator.pushNamed(
+                    context,
+                    SuraScreen.routeName,
+                    arguments: SuraData(
+                        suraName:
+                            QuranViewModel.suraDetailsModel[index].suraName,
+                        suraIndex: index),
+                  );
                 },
               ),
             ),

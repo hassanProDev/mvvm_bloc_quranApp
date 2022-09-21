@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../model/quran/sura_model.dart';
-import '../../../theming/my_theme.dart';
 import '../core/custom_title.dart';
 
 class SuraItem extends StatelessWidget {
@@ -27,10 +26,6 @@ class SuraItem extends StatelessWidget {
           Expanded(
             child: CustomTitle(
               title: '${suraDetailsModel!.suraName}',
-              left: BorderSide(
-                width: 2,
-                color: MyTheming.borderColor,
-              ),
             ),
           ),
         ],

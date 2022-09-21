@@ -9,4 +9,6 @@ class AppThemeChanged extends AppThemeState {}
 
 class AppColorChanged extends AppThemeState {}
 
+class ChangeLang extends AppThemeState {}
+
 class ChangeTabs extends AppThemeState {}

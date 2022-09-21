@@ -9,7 +9,7 @@ class MyTheming {
   static Color viewColor = Color(0xffF8F8F8);
   static Color borderColor = Color(0xffB7935F);
   static String bgImg = 'assets/images/bg3.png';
-  static String appName = 'اسلامي';
+
   static final ThemeData themeApp = ThemeData(
     primaryColor: primaryColor,
     appBarTheme: AppBarTheme(

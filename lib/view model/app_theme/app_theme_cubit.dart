@@ -17,10 +17,19 @@ class AppThemeCubit extends Cubit<AppThemeState> {
   }
 
   bool isDark = false;
+  String themeMode = 'dark';
+  String lang = 'ar';
+
+  void changeLang() {
+    lang == 'ar' ? lang = 'en' : lang = 'ar';
+    emit(ChangeLang());
+  }
 
   void changeTheme() {
     emit(AppThemeInitial());
     isDark == false ? isDark = true : isDark = false;
+    emit(AppThemeChanged());
+    themeMode == 'dark' ? themeMode = 'light' : themeMode = 'dark';
     emit(AppThemeChanged());
     MyTheming.ayaColor == Color(0xff242424)
         ? MyTheming.ayaColor = Color(0xffFACC1D)
