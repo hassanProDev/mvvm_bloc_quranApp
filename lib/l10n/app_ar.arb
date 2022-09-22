@@ -7,5 +7,7 @@
   "radio": "راديو",
   "lang": "english",
   "darkMode": "داكن",
-  "lightMode": "فاتح"
+  "lightMode": "فاتح",
+  "addZekr": "اضف ذكر",
+  "validZekr": "نأسف لا يمكنك اضافه نص فارغ"
 }

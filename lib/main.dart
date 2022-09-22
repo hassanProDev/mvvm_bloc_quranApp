@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,14 +8,19 @@ import 'package:mvvm_islami_app/view%20model/app_theme/app_theme_cubit.dart';
 import 'package:mvvm_islami_app/view/homeLayout/home.dart';
 import 'package:mvvm_islami_app/view/screens/ahadeth/hadeth_screen.dart';
 import 'package:mvvm_islami_app/view/screens/quran/sura_screen.dart';
+import 'package:mvvm_islami_app/view/screens/sebha/azkar_screen.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -43,6 +49,7 @@ class MyApp extends StatelessWidget {
               HadethScreen.routeName: (_) => HadethScreen(),
               HomeLayout.routeName: (_) => HomeLayout(),
               SuraScreen.routeName: (_) => SuraScreen(),
+              AzkarScreen.routeName: (_) => AzkarScreen(),
             },
             theme: MyTheming.themeApp,
             darkTheme: MyTheming.darkTheme,

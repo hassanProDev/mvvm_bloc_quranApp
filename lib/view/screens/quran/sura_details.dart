@@ -5,7 +5,6 @@ import 'package:mvvm_islami_app/view%20model/quran/quran_view_model.dart';
 import 'package:mvvm_islami_app/view/component/quran/sura_item.dart';
 import 'package:mvvm_islami_app/view/screens/quran/sura_screen.dart';
 
-import '../../../theming/my_theme.dart';
 import '../../component/core/custom_title.dart';
 
 class SuraDetails extends StatelessWidget {
@@ -27,16 +26,14 @@ class SuraDetails extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomTitle(
+                  hasBoreder: true,
                   title: 'الايات',
-                  top: BorderSide(width: 2, color: MyTheming.borderColor),
-                  bottom: BorderSide(width: 2, color: MyTheming.borderColor),
                 ),
               ),
               Expanded(
                 child: CustomTitle(
+                  hasBoreder: true,
                   title: 'السورة',
-                  top: BorderSide(width: 2, color: MyTheming.borderColor),
-                  bottom: BorderSide(width: 2, color: MyTheming.borderColor),
                 ),
               ),
             ],

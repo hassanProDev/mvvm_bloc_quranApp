@@ -19,12 +19,14 @@ class SuraItem extends StatelessWidget {
         children: [
           Expanded(
             child: CustomTitle(
+              hasBoreder: false,
               title: '${suraDetailsModel!.ayatCount}',
               // right: reusedBorder,
             ),
           ),
           Expanded(
             child: CustomTitle(
+              hasBoreder: false,
               title: '${suraDetailsModel!.suraName}',
             ),
           ),

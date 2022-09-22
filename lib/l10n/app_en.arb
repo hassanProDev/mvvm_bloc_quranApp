@@ -7,5 +7,7 @@
   "radio": "radio",
   "lang": "العربية",
   "darkMode": "dark",
-  "lightMode": "light"
+  "lightMode": "light",
+  "addZekr": "add zekr",
+  "validZekr": "sorry you can't add empty text"
 }

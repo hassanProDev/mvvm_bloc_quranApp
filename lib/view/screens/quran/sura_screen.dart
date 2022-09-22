@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mvvm_islami_app/model/quran/sura_model.dart';
-import 'package:mvvm_islami_app/theming/my_theme.dart';
 import 'package:mvvm_islami_app/view%20model/quran/sura_cubit.dart';
 import 'package:mvvm_islami_app/view/component/core/custom_title.dart';
+import 'package:mvvm_islami_app/view/component/core/diplay_content.dart';
+
+import '../../component/core/custom_bg.dart';
 
 class SuraScreen extends StatelessWidget {
   static const String routeName = 'suraScreen';
@@ -23,14 +25,7 @@ class SuraScreen extends StatelessWidget {
           suraCubit.loadFile(suraData.suraIndex);
           return Stack(
             children: [
-              Container(
-                width: double.infinity,
-                height: double.infinity,
-                child: Image.asset(
-                  MyTheming.bgImg,
-                  fit: BoxFit.fill,
-                ),
-              ),
+              CustomBgImg(),
               Scaffold(
                 appBar: AppBar(
                   title: Text(
@@ -41,32 +36,11 @@ class SuraScreen extends StatelessWidget {
                 body: Column(
                   children: [
                     CustomTitle(
+                      hasBoreder: true,
                       title: suraData.suraName,
                       style: Theme.of(context).textTheme.headline3,
-                      top: BorderSide(width: 2, color: MyTheming.borderColor),
-                      bottom:
-                          BorderSide(width: 2, color: MyTheming.borderColor),
                     ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: MyTheming.viewColor,
-                        ),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                        child: ListView.builder(
-                          itemCount: verse.length,
-                          itemBuilder: (_, index) => Text(
-                            verse[index],
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headline4,
-                          ),
-                        ),
-                      ),
-                    ),
+                    DisplayContent(content: verse),
                   ],
                 ),
               ),

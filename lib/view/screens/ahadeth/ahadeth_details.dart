@@ -6,8 +6,6 @@ import 'package:mvvm_islami_app/view%20model/ahadeth/ahadeth_cubit.dart';
 import 'package:mvvm_islami_app/view/component/core/custom_title.dart';
 import 'package:mvvm_islami_app/view/screens/ahadeth/hadeth_screen.dart';
 
-import '../../../theming/my_theme.dart';
-
 class AhadethDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -30,8 +28,7 @@ class AhadethDetails extends StatelessWidget {
             body: Column(
               children: [
                 CustomTitle(
-                  top: BorderSide(width: 2, color: MyTheming.borderColor),
-                  bottom: BorderSide(width: 2, color: MyTheming.borderColor),
+                  hasBoreder: true,
                   title: 'الاحاديث',
                 ),
                 Expanded(

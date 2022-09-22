@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../../theming/my_theme.dart';
+
 class CustomTitle extends StatelessWidget {
   String? title;
-  BorderSide top;
-  BorderSide bottom;
-
   TextStyle? style;
+  bool hasBoreder;
 
-  CustomTitle(
-      {Key? key,
-      this.title,
-      this.bottom = BorderSide.none,
-      this.top = BorderSide.none,
-      this.style})
+  CustomTitle({Key? key, required this.hasBoreder, this.title, this.style})
       : super(key: key);
 
   @override
@@ -25,8 +20,12 @@ class CustomTitle extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border(
-          top: top,
-          bottom: bottom,
+          top: hasBoreder
+              ? BorderSide(width: 2, color: MyTheming.borderColor)
+              : BorderSide.none,
+          bottom: hasBoreder
+              ? BorderSide(width: 2, color: MyTheming.borderColor)
+              : BorderSide.none,
         ),
       ),
     );

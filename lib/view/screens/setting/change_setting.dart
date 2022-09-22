@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mvvm_islami_app/view%20model/app_theme/app_theme_cubit.dart';
 import 'package:mvvm_islami_app/view/component/setting/CustomSettingBtn.dart';
+import 'package:mvvm_islami_app/view/screens/sebha/azkar_screen.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -32,6 +33,12 @@ class SettingScreen extends StatelessWidget {
                 name: AppLocalizations.of(context)!.lang.toUpperCase(),
                 func: () {
                   myCubit.changeLang();
+                },
+              ),
+              CustomSettingBtn(
+                name: AppLocalizations.of(context)!.addZekr.toUpperCase(),
+                func: () {
+                  Navigator.pushNamed(context, AzkarScreen.routeName);
                 },
               ),
             ],
