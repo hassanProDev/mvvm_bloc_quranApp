@@ -20,8 +20,20 @@ class AppThemeCubit extends Cubit<AppThemeState> {
   String themeMode = 'dark';
   String lang = 'ar';
 
+  IconData leftIcon = Icons.skip_next;
+  IconData rightIcon = Icons.skip_previous;
+
   void changeLang() {
     lang == 'ar' ? lang = 'en' : lang = 'ar';
+
+    rightIcon == Icons.skip_previous
+        ? rightIcon = Icons.skip_next
+        : rightIcon = Icons.skip_previous;
+
+    leftIcon == Icons.skip_next
+        ? leftIcon = Icons.skip_previous
+        : leftIcon = Icons.skip_next;
+
     emit(ChangeLang());
   }
 

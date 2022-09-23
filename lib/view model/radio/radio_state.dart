@@ -4,3 +4,5 @@ part of 'radio_cubit.dart';
 abstract class RadioState {}
 
 class RadioInitial extends RadioState {}
+
+class StatusChanged extends RadioState {}

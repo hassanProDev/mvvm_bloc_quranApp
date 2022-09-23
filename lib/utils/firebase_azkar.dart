@@ -23,3 +23,8 @@ Future<QuerySnapshot<AzkarModel>> getZekr() async {
   var collection = getCollection();
   return await collection.get();
 }
+
+Future<void> removeFromFireBase(AzkarModel azkarModel) async {
+  var collection = await getCollection();
+  return collection.doc(azkarModel.id).delete();
+}

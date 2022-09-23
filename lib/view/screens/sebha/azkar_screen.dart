@@ -4,7 +4,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mvvm_islami_app/model/azkar/azkar_model.dart';
 import 'package:mvvm_islami_app/utils/firebase_azkar.dart';
 import 'package:mvvm_islami_app/view/component/core/custom_bg.dart';
+import 'package:mvvm_islami_app/view/component/sebha/view_all_zekr.dart';
 import 'package:mvvm_islami_app/view/component/setting/CustomSettingBtn.dart';
+
+import '../../component/sebha/zekr_text_feild.dart';
 
 class AzkarScreen extends StatelessWidget {
   static const String routeName = 'azkarScreen';
@@ -29,53 +32,24 @@ class AzkarScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: StreamBuilder<QuerySnapshot<AzkarModel>>(
-                      stream: displayAllAzkar(),
-                      builder: (_, snapshot) {
-                        List<AzkarModel> azkarModel =
-                            snapshot.data?.docs.map((e) => e.data()).toList() ??
-                                [];
-                        return GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
-                                  crossAxisSpacing: 4,
-                                  mainAxisSpacing: 4),
-                          itemCount: azkarModel.length,
-                          itemBuilder: (_, index) => SingleChildScrollView(
-                            child: Text(
-                              azkarModel[index].zekr,
-                              style: Theme.of(context).textTheme.headline2,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        );
-                      }),
+                    stream: displayAllAzkar(),
+                    builder: (_, snapshot) {
+                      List<AzkarModel> azkarModel =
+                          snapshot.data?.docs.map((e) => e.data()).toList() ??
+                              [];
+                      return ViewAllZekr(azkarModel: azkarModel);
+                    },
+                  ),
                 ),
                 Form(
                   key: formKey,
                   child: Column(
                     children: [
-                      TextFormField(
-                        style: Theme.of(context).textTheme.headline2,
+                      ZekrTextFeild(
                         controller: zekr,
-                        validator: (v) {
-                          if (v!.isEmpty || v == null) {
-                            return AppLocalizations.of(context)!.validZekr;
-                          }
-                          return null;
-                        },
-                        onChanged: (v) {
+                        func: (v) {
                           zekr.text = v;
                         },
-                        decoration: InputDecoration(
-                          hintText: AppLocalizations.of(context)!.addZekr,
-                          hintStyle: Theme.of(context).textTheme.headline2,
-                          labelStyle: Theme.of(context).textTheme.headline2,
-                          isDense: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
                       ),
                       CustomSettingBtn(
                         name:

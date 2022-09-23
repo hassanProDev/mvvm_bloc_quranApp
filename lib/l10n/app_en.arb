@@ -9,5 +9,7 @@
   "darkMode": "dark",
   "lightMode": "light",
   "addZekr": "add zekr",
-  "validZekr": "sorry you can't add empty text"
+  "validZekr": "sorry you can't add empty text",
+  "noData": "go to setting to add Zekr",
+  "hasError": "you have some error check your internet"
 }
