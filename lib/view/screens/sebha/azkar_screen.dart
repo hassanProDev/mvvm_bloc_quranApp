@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mvvm_islami_app/model/azkar/azkar_model.dart';
 import 'package:mvvm_islami_app/utils/firebase_azkar.dart';
+import 'package:mvvm_islami_app/view%20model/app_theme/app_theme_cubit.dart';
 import 'package:mvvm_islami_app/view/component/core/custom_bg.dart';
 import 'package:mvvm_islami_app/view/component/sebha/view_all_zekr.dart';
 import 'package:mvvm_islami_app/view/component/setting/CustomSettingBtn.dart';
@@ -41,28 +43,34 @@ class AzkarScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      ZekrTextFeild(
-                        controller: zekr,
-                        func: (v) {
-                          zekr.text = v;
-                        },
+                BlocConsumer<AppThemeCubit, AppThemeState>(
+                  listener: (context, state) {
+                    // TODO: implement listener
+                  },
+                  builder: (context, state) {
+                    AppThemeCubit myCubit = BlocProvider.of(context);
+                    return Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          ZekrTextFeild(
+                            controller: zekr,
+                          ),
+                          CustomSettingBtn(
+                            name: AppLocalizations.of(context)!
+                                .addZekr
+                                .toUpperCase(),
+                            func: () {
+                              if (formKey.currentState!.validate()) {
+                                addNewZekr(AzkarModel(id: '', zekr: zekr.text));
+                              }
+                              zekr.text = '';
+                            },
+                          ),
+                        ],
                       ),
-                      CustomSettingBtn(
-                        name:
-                            AppLocalizations.of(context)!.addZekr.toUpperCase(),
-                        func: () {
-                          if (formKey.currentState!.validate()) {
-                            addNewZekr(AzkarModel(id: '', zekr: zekr.text));
-                          }
-                          zekr.text = '';
-                        },
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ],
             ),

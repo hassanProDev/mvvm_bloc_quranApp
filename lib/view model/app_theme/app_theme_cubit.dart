@@ -33,6 +33,9 @@ class AppThemeCubit extends Cubit<AppThemeState> {
     leftIcon == Icons.skip_next
         ? leftIcon = Icons.skip_previous
         : leftIcon = Icons.skip_next;
+    // textDirection == TextDirection.rtl
+    //     ? textDirection = TextDirection.ltr
+    //     : textDirection = TextDirection.rtl;
 
     emit(ChangeLang());
   }
